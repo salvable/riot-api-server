@@ -1,0 +1,11 @@
+{
+  "name": "RiotApi",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "run": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
