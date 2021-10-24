@@ -7,5 +7,5 @@ export const sequelize =  new Sequelize({
     username: config.development.username || "root",
     password: config.development.password,
     dialect: 'mysql',
-    modelPaths: [__dirname + Person]
+    modelPaths: [__dirname + '/models']
 });
