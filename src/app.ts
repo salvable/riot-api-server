@@ -14,20 +14,20 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.get('/get', (req: express.Request, res: express.Response) => {
     res.send('Hello world');
 })
 
-app.listen(PORT,HOST,async () => {
-    console.log(`Server Listening on ${HOST}:${PORT}`);
+const driver = async () =>{
+    try{
+        await sequelize.sync({force:false});
+    } catch (err) {
+        console.log(err)
+        console.log("init Fail");
+        return;
+    }
+}
 
-    // //sequelize-db 연결 테스트
-    await sequelize.authenticate()
-        .then(async () => {
-            console.log("connection success");
-        })
-        .catch((e) => {
-            console.log(sequelize);
-        })
-})
+driver();
+
+app.listen(PORT,HOST,async () => {console.log(`Server Listening on ${HOST}:${PORT}`);})
