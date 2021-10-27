@@ -6,9 +6,9 @@ export class User extends Model<UserAttributes>{
 
     @PrimaryKey
     @Column(DataType.STRING(20))
-    id: string;
+    userId: string;
 
-    @Column(DataType.STRING(30))
+    @Column(DataType.STRING(255))
     password: string;
 
     @Column(DataType.STRING(30))

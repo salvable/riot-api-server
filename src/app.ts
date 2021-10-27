@@ -5,6 +5,8 @@ import {sequelize} from "./models";
 import errorMiddleware from './middleware/error.middleware';
 import HttpException from "./exceptions/HttpException";
 
+const UserController = require("./controller/user.controller")
+
 dotenv.config();
 
 const PORT:number = 3000;
@@ -17,16 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(errorMiddleware);
 
-app.get('/get', (req: express.Request, res: express.Response,next: express.NextFunction) => {
-    // 에러처리 코드
-    throw new HttpException(404, 'Post not found');
-    res.send('Hello world');
-})
+app.post('/user', UserController.addUser)
+
 
 const driver = async () =>{
-
     try{
-        await sequelize.sync({force:false});
+        await sequelize.sync({force:true});
     } catch (err) {
         console.log(err)
         console.log("init Fail");
