@@ -1,6 +1,6 @@
 import * as express from "express";
 import {User} from "../models/user";
-import HttpException from "../exceptions/HttpException";
+import {HttpException} from "../exceptions/HttpException";
 const UserService = require("../service/user.service")
 
 

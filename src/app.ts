@@ -2,12 +2,13 @@ import * as express from "express";
 import * as dotenv from "dotenv";
 import * as cors from "cors";
 import {sequelize} from "./models";
-import errorMiddleware from './middleware/error.middleware';
-import HttpException from "./exceptions/HttpException";
+import {errorMiddleware} from './middleware/error.middleware';
 
+const RiotApi = require("./riot_api/riot_api")
 const UserController = require("./controller/user.controller")
 
-dotenv.config();
+
+    dotenv.config();
 
 const PORT:number = 3000;
 const HOST:string = process.env.DB_HOST || 'localhost';
@@ -19,7 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(errorMiddleware);
 
-app.get('/user', UserController.addUser)
+app.post('/user', UserController.addUser)
+app.get('/summoner/:summonerName', RiotApi.SummonerInfo)
 
 
 const driver = async () =>{

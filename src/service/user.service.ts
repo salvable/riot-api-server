@@ -1,5 +1,5 @@
 import {User} from '../models/user'
-import HttpException from "../exceptions/HttpException";
+import {HttpException} from "../exceptions/HttpException";
 import bcrypt = require("bcrypt");
 
 export const addUser = async (userId: string, password: string, email: string, name: string): Promise<User> => {
