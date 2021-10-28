@@ -7,6 +7,7 @@
     "run": "nodemon --exec ts-node ./src/app.ts --watch"
   },
   "dependencies": {
+    "@hapi/boom": "^9.1.4",
     "@types/bcrypt": "^5.0.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

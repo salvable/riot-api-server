@@ -11,12 +11,12 @@ export const addUser = async (userId: string, password: string, email: string, n
     const user = await User.findByPk(userId)
 
     if(user){
-        console.log("#######")
+        console.log("#####$$$##")
         throw new HttpException(409, 'Conflict');
         console.log("#######")
     }
 
-    console.log("#######")
+    console.log("!!!!!")
 
     const hash_password = await bcrypt.hash(password, 10)
     const newUser = await User.create({

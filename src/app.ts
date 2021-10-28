@@ -19,8 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(errorMiddleware);
 
-app.post('/user', UserController.addUser)
+app.get('/user', UserController.addUser)
+app.get('/get', (req: express.Request, res: express.Response,next: express.NextFunction) => {
 
+    throw new HttpException(404, 'Post not found');
+    console.log("####")
+    res.send('Hello world');
+})
 
 const driver = async () =>{
     try{
