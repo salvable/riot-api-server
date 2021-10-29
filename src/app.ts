@@ -22,6 +22,7 @@ app.use(errorMiddleware);
 
 app.post('/user', UserController.addUser)
 app.get('/summoner/:summonerName', RiotApi.SummonerInfo)
+app.get('/match/:matchId', RiotApi.getMatch)
 app.get('/matches/:puuId', RiotApi.getMatchList)
 
 
