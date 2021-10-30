@@ -7,8 +7,7 @@ import {errorMiddleware} from './middleware/error.middleware';
 const RiotApi = require("./riot_api/riot_api")
 const UserController = require("./controller/user.controller")
 
-
-    dotenv.config();
+dotenv.config();
 
 const PORT:number = 3000;
 const HOST:string = process.env.DB_HOST || 'localhost';
@@ -24,6 +23,7 @@ app.post('/user', UserController.addUser)
 app.get('/summoner/:summonerName', RiotApi.SummonerInfo)
 app.get('/match/:matchId', RiotApi.getMatch)
 app.get('/matches/:puuId', RiotApi.getMatchList)
+app.get('/league/:encryptedSummonerId', RiotApi.getLeagueInfo)
 
 
 const driver = async () =>{

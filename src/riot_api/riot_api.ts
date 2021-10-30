@@ -39,3 +39,15 @@ export const getMatch = async (req: express.Request, res:express.Response, next:
         }
     )
 }
+
+export const getLeagueInfo = async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
+    const encryptedSummonerId = req.params.encryptedSummonerId || undefined
+
+    const LeagueInfo = await axios.get(`https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${process.env.RIOT_API_KEY}`)
+
+    return res.send(
+        {
+            LeagueInfo : LeagueInfo.data
+        }
+    )
+}
