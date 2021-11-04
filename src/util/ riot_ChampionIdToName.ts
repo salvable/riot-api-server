@@ -212,7 +212,7 @@ export function getEnNameByChampionId(championId: any) // 매개변수: 챔피�
         case  9:
             championId =  "Fiddlesticks";break;
         case  31:
-            championId =  "ChoGath";break;
+            championId =  "Chogath";break;
         case  33:
             championId =  "Rammus";break;
         case  7:
