@@ -1,6 +1,6 @@
 // 챔피언 코드를 이미지를 받아오기 위한 영문과 한글로 변환
 
-function getEnNameByChampionId(championId: any) // 매개변수: 챔피언 id
+export function getEnNameByChampionId(championId: any) // 매개변수: 챔피언 id
 {
     switch (championId) {
         case 266:
@@ -328,7 +328,7 @@ function getEnNameByChampionId(championId: any) // 매개변수: 챔피언 id
     return championId;
 }
 
-function getKrNameByChampionId(championId: any){ // 매개변수: 챔피언 id
+export function getKrNameByChampionId(championId: any){ // 매개변수: 챔피언 id
     switch (championId) {
         case 266:
             championId = "아트록스";break; // 챔피언 한글 이름

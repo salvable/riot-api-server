@@ -1,4 +1,5 @@
 import * as express from "express";
+import {getEnNameByChampionId, getKrNameByChampionId} from "../util/ riot_ChampionIdToName"
 const axios = require('axios');
 
 export const SummonerInfo = async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
@@ -48,6 +49,25 @@ export const getLeagueInfo = async (req: express.Request, res:express.Response, 
     return res.send(
         {
             LeagueInfo : LeagueInfo.data
+        }
+    )
+}
+
+export const getRotationList = async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
+
+    const rotations = await axios.get(`https://kr.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${process.env.RIOT_API_KEY}`)
+
+    let championNames: any = []
+
+    for (const id of rotations.data.freeChampionIds) {
+        const En_name = getEnNameByChampionId(id)
+        const Kr_name = getKrNameByChampionId(id)
+        championNames.push({En_name,Kr_name})
+    }
+
+    return res.send(
+        {
+            rotations : championNames
         }
     )
 }
