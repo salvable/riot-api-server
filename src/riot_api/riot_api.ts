@@ -2,7 +2,7 @@ import * as express from "express";
 import {getEnNameByChampionId, getKrNameByChampionId} from "../util/ riot_ChampionIdToName"
 const axios = require('axios');
 
-export const getSummonerInfo = async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
+export const getSummoner= async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
     const summonerName = req.params.summonerName
 
     const summoner = await axios.get(`https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`)
@@ -14,7 +14,7 @@ export const getSummonerInfo = async (req: express.Request, res:express.Response
     )
 }
 
-export const getSummonerStat = async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
+export const getSummonerRank = async (req: express.Request, res:express.Response, next:express.NextFunction)=> {
     const summonerId = req.params.summonerId
 
     const summoner = await axios.get(`https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${process.env.RIOT_API_KEY}`)

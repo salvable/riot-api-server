@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(errorMiddleware);
 
 app.post('/user', UserController.addUser)
-app.get('/summonerInfo/:summonerName', RiotApi.getSummonerInfo)
-app.get('/summonerStat/:summonerId', RiotApi.getSummonerStat)
+app.get('/summoner/:summonerName', RiotApi.getSummoner)
+app.get('/rank/:summonerId', RiotApi.getSummonerRank)
 app.get('/match/:matchId', RiotApi.getMatch)
 app.get('/matches/:puuId', RiotApi.getMatchList)
 app.get('/league/:encryptedSummonerId', RiotApi.getLeagueInfo)
